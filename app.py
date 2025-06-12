@@ -5,6 +5,7 @@ from sentence_transformers import SentenceTransformer
 from scipy import spatial
 import streamlit as st
 st.title("Interactive KPI and Text Similarity app 💬")
+st.header('מודל לחישוב דמיון טקסטואלי בין תיאורים וחישוב שיעור אישור חשבוניות לפי פרמטר לבחירה')
 
 st.sidebar.title("App Description")
 
@@ -34,14 +35,13 @@ if user_input1 and user_input2 and button:
     emb1 = model.encode(user_input1)
     emb2 = model.encode(user_input2)
     similarity_score = 1 - spatial.distance.cosine(emb1, emb2)
-    st.write("Similarity Score:" similarity_score)
+    st.write(f"Similarity Score: {similarity_score}")   
 
 
 files = ['purchase_orders','goods_receipts','vendor_invoices',
 'material_master','vendor_master','invoice_approvals']
 
 with st.sidebar:
-    st.write('מודל לחישוב דמיון טקסטואלי בין תיאורים וחישוב שיעור אישור חשבוניות לפי פרמטר לבחירה')
     st.write("קבצים שנמצאים ב DB:")
     for file in files:
         st.markdown("- " + file)  
