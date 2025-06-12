@@ -34,11 +34,8 @@ if user_input1 and user_input2 and button:
     emb1 = model.encode(user_input1)
     emb2 = model.encode(user_input2)
     similarity_score = 1 - spatial.distance.cosine(emb1, emb2)
-    st.write(f"Similarity Score: similarity_score")
+    st.write(f"Similarity Score:" similarity_score)
 
-
-#variables = ['קבוצת מוצר','דמיון טקסטואלי','התאמה מדויקת בין כמות פריטים','התאמה מדויקת מחיר בחשבונית']
-#Variables = st.selectbox("בחר פרמטר להצגת שיעורי KPI ", variables)
 
 files = ['purchase_orders','goods_receipts','vendor_invoices',
 'material_master','vendor_master','invoice_approvals']
@@ -72,7 +69,7 @@ def generate_kpi_report(df, group_col, target_col='IsApproved', title=""):
     kpi_df = kpi_df.sort_values(by='Approval_Rate', ascending=False)
 
     # Visualization
-    fig = plt.figure(figsize=(3, 3))
+    fig = plt.figure(figsize=(2, 2))
     sns.barplot(x='Approval_Rate', y=group_col, data=kpi_df, palette='viridis')
     plt.title(title)
     plt.xlabel('Approval Rate')
