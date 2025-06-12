@@ -5,7 +5,7 @@ from sentence_transformers import SentenceTransformer
 from scipy import spatial
 import streamlit as st
 st.title("Interactive KPI and Text Similarity app 💬")
-st.header('מודל לחישוב דמיון טקסטואלי בין תיאורים וחישוב שיעור אישור חשבוניות לפי פרמטר לבחירה')
+st.header('מודל לחישוב דמיון טקסטואלי בין תיאורי פריטים וחישוב שיעור אישור חשבוניות לפי פרמטר לבחירה')
 
 st.sidebar.title("App Description")
 
@@ -43,6 +43,7 @@ files = ['purchase_orders','goods_receipts','vendor_invoices',
 'material_master','vendor_master','invoice_approvals']
 
 with st.sidebar:
+    st.write('sentence-transformers/all-mpnet-base-v2')
     st.write("קבצים שנמצאים ב DB:")
     for file in files:
         st.markdown("- " + file)  
