@@ -14,9 +14,9 @@ var_mapping = {'קבוצת מוצר':'MaterialGroup',
                'התאמה מדויקת - מחיר':'Price_Mismatch_Category',
                'שם ספק':'VendorName'}
     
-# custom_names = list(var_mapping.keys())
- selected_custom_name = st.sidebar.selectbox('בחר פרמטר לחישוב KPI ', ['', *custom_names])
- selected_actual_name = var_mapping.get(selected_custom_name)
+custom_names = list(var_mapping.keys())
+selected_custom_name = st.sidebar.selectbox('בחר פרמטר לחישוב KPI ', ['', *custom_names])
+selected_actual_name = var_mapping.get(selected_custom_name)
 
 st.write('חישוב דמיון טקסטואלי')
 # Load Transformers model
