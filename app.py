@@ -15,18 +15,19 @@ var_mapping = {'קבוצת מוצר':'MaterialGroup',
                'שם ספק':'VendorName'}
     
 custom_names = list(var_mapping.keys())
-selected_custom_name = st.sidebar.selectbox('בחר פרמטר לחישוב KPI ', ['', *custom_names])
+#selected_custom_name = st.sidebar.selectbox('בחר פרמטר לחישוב KPI ', ['', *custom_names])
+selected_custom_name = st.selectbox("בחר פרמטר לחישוב KPI", custom_names)
+
 selected_actual_name = var_mapping.get(selected_custom_name)
 
 st.markdown('חישוב דמיון טקסטואלי')
-st.info("הקלד שאלה")
 
 # Load Transformers model
 model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
 
 user_input1 = st.text_input("תיאור פריט פנימי")
 user_input2 = st.text_input("תיאור פריט ספק")
-button = st.button("חשב דמיון טקסטואלי")
+button = st.button("חשב")
 
 
 if user_input1 and user_input2 and button:
@@ -43,7 +44,7 @@ files = ['purchase_orders','goods_receipts','vendor_invoices',
 'material_master','vendor_master','invoice_approvals']
 
 with st.sidebar:
-    st.write('שיעורי אישור חשבוניות לפי פרמטרים לבחירה')
+    st.write('מודל לחישוב דמיון טקסטואלי בין תיאורים וחישוב שיעור אישור חשבוניות לפי פרמטר לבחירה')
     st.write("קבצים שנמצאים ב DB:")
     for file in files:
         st.markdown("- " + file)  
