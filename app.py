@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sentence_transformers import SentenceTransformer
 from scipy import spatial
-
+import streamlit as st
 st.title("Interactive KPI and Text Similarity app 💬")
 
 st.sidebar.title("App Description")
