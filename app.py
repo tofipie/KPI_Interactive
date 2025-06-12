@@ -18,7 +18,8 @@ custom_names = list(var_mapping.keys())
 selected_custom_name = st.sidebar.selectbox('בחר פרמטר לחישוב KPI ', ['', *custom_names])
 selected_actual_name = var_mapping.get(selected_custom_name)
 
-st.write('חישוב דמיון טקסטואלי')
+st.markdown('חישוב דמיון טקסטואלי')
+
 # Load Transformers model
 model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
 
