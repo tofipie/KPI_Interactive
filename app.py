@@ -34,7 +34,7 @@ if user_input1 and user_input2 and button:
     emb1 = model.encode(user_input1)
     emb2 = model.encode(user_input2)
     similarity_score = 1 - spatial.distance.cosine(emb1, emb2)
-    st.write(f"Similarity Score:" similarity_score)
+    st.write("Similarity Score:" similarity_score)
 
 
 files = ['purchase_orders','goods_receipts','vendor_invoices',
