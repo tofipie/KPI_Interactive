@@ -12,12 +12,10 @@ var_mapping = {'קבוצת מוצר':'MaterialGroup',
                'דמיון טקסטואלי':'Similarity_Category',
                'התאמה מדויקת - כמות פריטים':'Qty_Mismatch_Category',
                'התאמה מדויקת - מחיר':'Price_Mismatch_Category',
-               'שם ספק':'VendorName'
-    
-}
+               'שם ספק':'VendorName'}
     
  custom_names = list(var_mapping.keys())
- selected_custom_name = st.sidebar.selectbox('בחר מסמך', ['', *custom_names])
+ selected_custom_name = st.sidebar.selectbox('בחר פרמטר לחישוב KPI ', ['', *custom_names])
  selected_actual_name = var_mapping.get(selected_custom_name)
 
 st.write('חישוב דמיון טקסטואלי')
