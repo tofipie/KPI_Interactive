@@ -20,9 +20,7 @@ var_mapping = {
  selected_custom_name = st.sidebar.selectbox('בחר מסמך', ['', *custom_names])
  selected_actual_name = var_mapping.get(selected_custom_name)
 
-
-
-
+st.write('חישוב דמיון טקסטואלי')
 # Load Transformers model
 model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
 
