@@ -1,8 +1,10 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sentence_transformers import SentenceTransformer
+from scipy import spatial
 
-st.title("Interactive KPI app 💬")
+st.title("Interactive KPI and Text Similarity app 💬")
 
 st.sidebar.title("App Description")
 
@@ -17,6 +19,22 @@ var_mapping = {
  custom_names = list(var_mapping.keys())
  selected_custom_name = st.sidebar.selectbox('בחר מסמך', ['', *custom_names])
  selected_actual_name = var_mapping.get(selected_custom_name)
+
+
+
+
+# Load Transformers model
+model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
+
+user_input1 = st.text_input("תיאור פריט פנימי")
+user_input2 = st.text_input("תיאור פריט ספק")
+button = st.button("חשב דמיון טקסטואלי")
+
+if user_input1 and user_input2 and button:
+    emb1 = model.encode(user_input1)
+    emb2 = model.encode(user_input2)
+    similarity_score = 1 - spatial.distance.cosine(emb1, emb2)
+    st.write(f"Similarity Score: similarity_score")
 
 
 #variables = ['קבוצת מוצר','דמיון טקסטואלי','התאמה מדויקת בין כמות פריטים','התאמה מדויקת מחיר בחשבונית']
