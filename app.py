@@ -19,6 +19,7 @@ selected_custom_name = st.sidebar.selectbox('בחר פרמטר לחישוב KPI 
 selected_actual_name = var_mapping.get(selected_custom_name)
 
 st.markdown('חישוב דמיון טקסטואלי')
+st.info("הקלד שאלה")
 
 # Load Transformers model
 model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
@@ -26,6 +27,7 @@ model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
 user_input1 = st.text_input("תיאור פריט פנימי")
 user_input2 = st.text_input("תיאור פריט ספק")
 button = st.button("חשב דמיון טקסטואלי")
+
 
 if user_input1 and user_input2 and button:
     emb1 = model.encode(user_input1)
