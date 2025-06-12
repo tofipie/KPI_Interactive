@@ -8,14 +8,14 @@ st.title("Interactive KPI and Text Similarity app 💬")
 
 st.sidebar.title("App Description")
 
-var_mapping = {
-    'קבוצת מוצר': 'MaterialGroup',
-    'דמיון טקסטואלי':'Similarity_Category',
-    'התאמה מדויקת-כמות פריטים' : 'Qty_Mismatch_Category',
-    'התאמה מדויקת - מחיר': 'Price_Mismatch_Category',
-    'שם ספק':'VendorName'
+var_mapping = {'קבוצת מוצר':'MaterialGroup',
+               'דמיון טקסטואלי':'Similarity_Category',
+               'התאמה מדויקת - כמות פריטים':'Qty_Mismatch_Category',
+               'התאמה מדויקת - מחיר':'Price_Mismatch_Category',
+               'שם ספק':'VendorName'
+    
 }
-
+    
  custom_names = list(var_mapping.keys())
  selected_custom_name = st.sidebar.selectbox('בחר מסמך', ['', *custom_names])
  selected_actual_name = var_mapping.get(selected_custom_name)
