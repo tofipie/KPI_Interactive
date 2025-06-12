@@ -34,8 +34,8 @@ button = st.button("חשב")
 if user_input1 and user_input2 and button:
     emb1 = model.encode(user_input1)
     emb2 = model.encode(user_input2)
-    similarity_score = {:.3f}".format(1 - spatial.distance.cosine(emb1, emb2)) 
-    st.write(f"Similarity Score: {similarity_score}") 
+    similarity_score = 1 - spatial.distance.cosine(emb1, emb2)
+    st.write(f"Similarity Score: {"{:.2f}".format(similarity_score)}") # "{:.2f}".format(x)
 
 
 
