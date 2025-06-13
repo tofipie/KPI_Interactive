@@ -5,10 +5,23 @@ from sentence_transformers import SentenceTransformer
 from scipy import spatial
 import streamlit as st
 st.title("Interactive KPI Dashboard and Text Similarity app 💬")
+st.header('Made by Noa Cohen')
+st.subheader('sentence-transformers/all-mpnet-base-v2',divider="green")
+
+
+files = ['purchase_orders','goods_receipts','vendor_invoices',
+'material_master','vendor_master','invoice_approvals']
+st.sidebar.title("App Description")
+
+with st.sidebar:
+    st.write("קבצים שנמצאים ב DB:")
+    for file in files:
+        st.markdown("- " + file)  
+
+report_df = pd.read_csv('report_df.csv')
 
 st.subheader(" מודל לחישוב דמיון טקסטואלי בין תיאורי פריטים", divider="green") 
 
-st.sidebar.title("App Description")
 
 var_mapping = {'קבוצת מוצר':'MaterialGroup',
                'דמיון טקסטואלי':'Similarity_Category',
@@ -26,8 +39,8 @@ button = st.button("חשב")
 st.subheader("חישוב שיעור אישור חשבוניות לפי פרמטר", divider="blue")
 
 custom_names = list(var_mapping.keys())
-selected_actual_name = var_mapping.get(selected_custom_name)
 selected_custom_name = st.selectbox("בחר פרמטר לחישוב KPI", custom_names)
+selected_actual_name = var_mapping.get(selected_custom_name)
 
 if user_input1 and user_input2 and button:
     emb1 = model.encode(user_input1)
@@ -35,19 +48,6 @@ if user_input1 and user_input2 and button:
     similarity_score = 1 - spatial.distance.cosine(emb1, emb2)
     st.write(f"Similarity Score: {"{:.2f}".format(similarity_score)}") # "{:.2f}".format(x)
 
-
-
-files = ['purchase_orders','goods_receipts','vendor_invoices',
-'material_master','vendor_master','invoice_approvals']
-
-with st.sidebar:
-    st.write("קבצים שנמצאים ב DB:")
-    st.write('sentence-transformers/all-mpnet-base-v2')
-    for file in files:
-        st.markdown("- " + file)  
-    st.write('Made by Noa Cohen')
-
-report_df = pd.read_csv('report_df.csv')
 
 titles_dict = {'MaterialGroup':'Approval Rate by MaterialGroup',
 'Similarity_Category':'Approval Rate by Text Similarity Score',
