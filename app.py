@@ -16,11 +16,6 @@ var_mapping = {'קבוצת מוצר':'MaterialGroup',
                'התאמה מדויקת - מחיר':'Price_Mismatch_Category',
                'שם ספק':'VendorName'}
     
-custom_names = list(var_mapping.keys())
-#selected_custom_name = st.sidebar.selectbox('בחר פרמטר לחישוב KPI ', ['', *custom_names])
-
-selected_actual_name = var_mapping.get(selected_custom_name)
-
 # Load Transformers model
 model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
 
@@ -29,6 +24,9 @@ user_input2 = st.text_input("תיאור פריט ספק")
 button = st.button("חשב")
 
 st.subheader("חישוב שיעור אישור חשבוניות לפי פרמטר", divider="blue")
+
+custom_names = list(var_mapping.keys())
+selected_actual_name = var_mapping.get(selected_custom_name)
 selected_custom_name = st.selectbox("בחר פרמטר לחישוב KPI", custom_names)
 
 if user_input1 and user_input2 and button:
