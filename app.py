@@ -36,6 +36,11 @@ model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
 user_input1 = st.text_input("תיאור פריט פנימי")
 user_input2 = st.text_input("תיאור פריט ספק")
 button = st.button("חשב")
+if user_input1 and user_input2 and button:
+    emb1 = model.encode(user_input1)
+    emb2 = model.encode(user_input2)
+    similarity_score = 1 - spatial.distance.cosine(emb1, emb2)
+    st.write(f"Similarity Score: {"{:.2f}".format(similarity_score)}") # "{:.2f}".format(x)
 
 st.subheader("חישוב שיעור אישור חשבוניות לפי פרמטר", divider="blue")
 
@@ -43,11 +48,6 @@ custom_names = list(var_mapping.keys())
 selected_custom_name = st.selectbox("בחר פרמטר לחישוב KPI", custom_names)
 selected_actual_name = var_mapping.get(selected_custom_name)
 
-if user_input1 and user_input2 and button:
-    emb1 = model.encode(user_input1)
-    emb2 = model.encode(user_input2)
-    similarity_score = 1 - spatial.distance.cosine(emb1, emb2)
-    st.write(f"Similarity Score: {"{:.2f}".format(similarity_score)}") # "{:.2f}".format(x)
 
 
 titles_dict = {'MaterialGroup':'Approval Rate by MaterialGroup',
