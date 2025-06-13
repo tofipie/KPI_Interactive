@@ -21,8 +21,6 @@ custom_names = list(var_mapping.keys())
 
 selected_actual_name = var_mapping.get(selected_custom_name)
 
-st.markdown('חישוב דמיון טקסטואלי')
-
 # Load Transformers model
 model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
 
