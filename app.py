@@ -6,6 +6,8 @@ from scipy import spatial
 import streamlit as st
 st.title("Interactive KPI Dashboard and Text Similarity app 💬")
 st.header('Made by Noa Cohen')
+
+st.subheader(" מודל לחישוב דמיון טקסטואלי בין תיאורי פריטים", divider="green") 
 st.subheader('sentence-transformers/all-mpnet-base-v2',divider="green")
 
 
@@ -36,7 +38,6 @@ user_input2 = st.text_input("תיאור פריט ספק")
 button = st.button("חשב")
 
 st.subheader("חישוב שיעור אישור חשבוניות לפי פרמטר", divider="blue")
-st.subheader(" מודל לחישוב דמיון טקסטואלי בין תיאורי פריטים", divider="green") 
 
 custom_names = list(var_mapping.keys())
 selected_custom_name = st.selectbox("בחר פרמטר לחישוב KPI", custom_names)
