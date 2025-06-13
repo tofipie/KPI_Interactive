@@ -7,7 +7,6 @@ import streamlit as st
 st.title("Interactive KPI Dashboard and Text Similarity app 💬")
 
 st.subheader("sentence-transformers/all-mpnet-base-v2 מודל לחישוב דמיון טקסטואלי בין תיאורי פריטים - שימוש במודל ", divider="green") 
-st.subheader("חישוב שיעור אישור חשבוניות לפי פרמטר", divider="blue")
 
 st.sidebar.title("App Description")
 
@@ -32,6 +31,7 @@ user_input1 = st.text_input("תיאור פריט פנימי")
 user_input2 = st.text_input("תיאור פריט ספק")
 button = st.button("חשב")
 
+st.subheader("חישוב שיעור אישור חשבוניות לפי פרמטר", divider="blue")
 
 if user_input1 and user_input2 and button:
     emb1 = model.encode(user_input1)
