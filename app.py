@@ -4,8 +4,10 @@ import seaborn as sns
 from sentence_transformers import SentenceTransformer
 from scipy import spatial
 import streamlit as st
-st.title("Interactive KPI and Text Similarity app 💬")
-st.header('מודל לחישוב דמיון טקסטואלי בין תיאורי פריטים וחישוב שיעור אישור חשבוניות לפי פרמטר לבחירה')
+st.title("Interactive KPI Dashboard and Text Similarity app 💬")
+
+st.subheader("sentence-transformers/all-mpnet-base-v2 מודל לחישוב דמיון טקסטואלי בין תיאורי פריטים - שימוש במודל ", divider="green") 
+st.subheader("חישוב שיעור אישור חשבוניות לפי פרמטר", divider="blue")
 
 st.sidebar.title("App Description")
 
@@ -43,7 +45,6 @@ files = ['purchase_orders','goods_receipts','vendor_invoices',
 'material_master','vendor_master','invoice_approvals']
 
 with st.sidebar:
-    st.write('sentence-transformers/all-mpnet-base-v2')
     st.write("קבצים שנמצאים ב DB:")
     for file in files:
         st.markdown("- " + file)  
