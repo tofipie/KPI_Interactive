@@ -18,7 +18,6 @@ var_mapping = {'קבוצת מוצר':'MaterialGroup',
     
 custom_names = list(var_mapping.keys())
 #selected_custom_name = st.sidebar.selectbox('בחר פרמטר לחישוב KPI ', ['', *custom_names])
-selected_custom_name = st.selectbox("בחר פרמטר לחישוב KPI", custom_names)
 
 selected_actual_name = var_mapping.get(selected_custom_name)
 
@@ -32,6 +31,7 @@ user_input2 = st.text_input("תיאור פריט ספק")
 button = st.button("חשב")
 
 st.subheader("חישוב שיעור אישור חשבוניות לפי פרמטר", divider="blue")
+selected_custom_name = st.selectbox("בחר פרמטר לחישוב KPI", custom_names)
 
 if user_input1 and user_input2 and button:
     emb1 = model.encode(user_input1)
