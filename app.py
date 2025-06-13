@@ -20,7 +20,6 @@ with st.sidebar:
 
 report_df = pd.read_csv('report_df.csv')
 
-st.subheader(" מודל לחישוב דמיון טקסטואלי בין תיאורי פריטים", divider="green") 
 
 
 var_mapping = {'קבוצת מוצר':'MaterialGroup',
@@ -37,6 +36,7 @@ user_input2 = st.text_input("תיאור פריט ספק")
 button = st.button("חשב")
 
 st.subheader("חישוב שיעור אישור חשבוניות לפי פרמטר", divider="blue")
+st.subheader(" מודל לחישוב דמיון טקסטואלי בין תיאורי פריטים", divider="green") 
 
 custom_names = list(var_mapping.keys())
 selected_custom_name = st.selectbox("בחר פרמטר לחישוב KPI", custom_names)
