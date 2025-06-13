@@ -6,7 +6,7 @@ from scipy import spatial
 import streamlit as st
 st.title("Interactive KPI Dashboard and Text Similarity app 💬")
 
-st.subheader("sentence-transformers/all-mpnet-base-v2 מודל לחישוב דמיון טקסטואלי בין תיאורי פריטים - שימוש במודל ", divider="green") 
+st.subheader(" מודל לחישוב דמיון טקסטואלי בין תיאורי פריטים", divider="green") 
 
 st.sidebar.title("App Description")
 
@@ -46,6 +46,7 @@ files = ['purchase_orders','goods_receipts','vendor_invoices',
 
 with st.sidebar:
     st.write("קבצים שנמצאים ב DB:")
+    st.write('sentence-transformers/all-mpnet-base-v2')
     for file in files:
         st.markdown("- " + file)  
     st.write('Made by Noa Cohen')
