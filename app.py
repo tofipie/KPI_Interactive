@@ -6,6 +6,7 @@ from scipy import spatial
 import streamlit as st
 #from utils import groq_generation
 from groq import Groq
+from langchain_groq import ChatGroq
 
 GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
 
