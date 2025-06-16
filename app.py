@@ -7,6 +7,7 @@ import streamlit as st
 #from utils import groq_generation
 from groq import Groq
 from langchain_groq import ChatGroq
+from langchain.prompts import PromptTemplate
 
 GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
 
