@@ -37,6 +37,11 @@ user_input1 = st.text_input("תיאור פריט פנימי")
 user_input2 = st.text_input("תיאור פריט ספק")
 button = st.button("חשב")
 if user_input1 and user_input2 and button:
+    #translate to english if theres hebrew description using LLM
+    
+
+
+    
     emb1 = model.encode(user_input1)
     emb2 = model.encode(user_input2)
     similarity_score = 1 - spatial.distance.cosine(emb1, emb2)
