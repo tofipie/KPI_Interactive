@@ -4,6 +4,16 @@ import seaborn as sns
 from sentence_transformers import SentenceTransformer
 from scipy import spatial
 import streamlit as st
+from utils import grop_generation
+from groq import Groq
+
+GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
+client = Groq(api_key=GROQ_API_KEY)
+prompt = """
+"Translate the following [DOCUMENT] into a complete English. Give me only the final text"
+
+"""
+
 st.title("Interactive KPI Dashboard and Text Similarity app 💬")
 st.header('Made by Noa Cohen')
 
@@ -39,11 +49,11 @@ button = st.button("חשב")
 if user_input1 and user_input2 and button:
     #translate to english if theres hebrew description using LLM
     
-
-
-    
-    emb1 = model.encode(user_input1)
-    emb2 = model.encode(user_input2)
+    translated1 = groq_generation(prompt, user_input1)
+    translated2 = groq_generation(prompt, user_input)
+   
+    emb1 = model.encode(translated1)
+    emb2 = model.encode(translated2)
     similarity_score = 1 - spatial.distance.cosine(emb1, emb2)
     st.write(f"Similarity Score: {"{:.2f}".format(similarity_score)}") # "{:.2f}".format(x)
 
