@@ -2,3 +2,4 @@ sentence-transformers
 matplotlib
 seaborn 
 langchain_groq
+langchain
