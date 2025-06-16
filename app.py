@@ -4,7 +4,7 @@ import seaborn as sns
 from sentence_transformers import SentenceTransformer
 from scipy import spatial
 import streamlit as st
-from utils import grop_generation
+#from utils import groq_generation
 from groq import Groq
 
 GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
