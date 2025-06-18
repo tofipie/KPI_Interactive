@@ -70,7 +70,7 @@ model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
 user_input1 = st.text_input("תיאור פריט פנימי")
 user_input2 = st.text_input("תיאור פריט ספק")
 
-button = st.button("חשב")
+button = st.button("חשב דמיון טקסט")
 if user_input1 and user_input2 and button:
     
     text_1 = direct_task_chain.invoke({user_input1}).content
@@ -79,7 +79,8 @@ if user_input1 and user_input2 and button:
     emb1 = model.encode(text_1)
     emb2 = model.encode(text_2)
     similarity_score = 1 - spatial.distance.cosine(emb1, emb2)
-    st.write(f"Similarity Score: {"{:.2f}".format(similarity_score)}") # "{:.2f}".format(x)
+    st.write("{:.3f}".format(similarity_score))
+    #st.write(f"Similarity Score: {"{:.2f}".format(similarity_score)}") # "{:.2f}".format(x)
 
 st.subheader("חישוב שיעור אישור חשבוניות לפי פרמטר", divider="blue")
 
