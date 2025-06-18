@@ -57,6 +57,8 @@ with st.sidebar:
         st.markdown("- " + file)  
 
 report_df = pd.read_csv('report_df.csv')
+report_df['VendorName'] = report_df['VendorName'].apply(lambda x: x[::-1])
+
 
 var_mapping = {'קבוצת מוצר':'MaterialGroup',
                'דמיון טקסטואלי':'Similarity_Category',
