@@ -113,7 +113,7 @@ def generate_kpi_report(df, group_col, target_col='IsApproved', title=""):
     kpi_df = kpi_df.sort_values(by='Approval_Rate', ascending=False)
 
     # Visualization
-    fig = plt.figure(figsize=(9, 5))
+    fig = plt.figure(figsize=(5,4))
     sns.barplot(x='Approval_Rate', y=group_col, data=kpi_df, palette='viridis',legend=False,hue=group_col)
     plt.title(title)
     plt.xlabel('Approval Rate')
