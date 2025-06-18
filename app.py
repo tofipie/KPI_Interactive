@@ -9,41 +9,6 @@ from groq import Groq
 from langchain_groq import ChatGroq
 from langchain.prompts import PromptTemplate
 
-GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
-
-
-llm = ChatGroq(model="llama-3.1-8b-instant", temperature=0)
-
-def get_response(prompt):
-    """Helper function to get response from the language model."""
-    return llm.invoke(prompt).content
-
-def create_chain(prompt_template):
-    """
-    Create a LangChain chain with the given prompt template.
-
-    Args:
-        prompt_template (str): The prompt template string.
-
-    Returns:
-        LLMChain: A LangChain chain object.
-    """
-    prompt = PromptTemplate.from_template(prompt_template)
-    return prompt | llm
-
-direct_task_prompt = """
-Translate the text into a complete English. Give me only the final text"
-
-Text: {text}
-
-Translation:
-
-"""
-
-
-direct_task_chain = create_chain(direct_task_prompt)
-
-
 st.title("Interactive KPI Dashboard and Text Similarity app 💬")
 st.header('Made by Noa Cohen')
 
@@ -62,8 +27,6 @@ with st.sidebar:
 
 report_df = pd.read_csv('report_df.csv')
 
-
-
 var_mapping = {'קבוצת מוצר':'MaterialGroup',
                'דמיון טקסטואלי':'Similarity_Category',
                'התאמה מדויקת - כמות פריטים':'Qty_Mismatch_Category',
@@ -77,13 +40,9 @@ user_input1 = st.text_input("תיאור פריט פנימי")
 user_input2 = st.text_input("תיאור פריט ספק")
 button = st.button("חשב")
 if user_input1 and user_input2 and button:
-    #translate to english if theres hebrew description using LLM
-    
-    translated1 = direct_task_chain.invoke({user_input1}).content
-    translated2 = direct_task_chain.invoke({user_input2}).content
 
-    emb1 = model.encode(translated1)
-    emb2 = model.encode(translated2)
+    emb1 = model.encode(user_input1)
+    emb2 = model.encode(user_input2)
     similarity_score = 1 - spatial.distance.cosine(emb1, emb2)
     st.write(f"Similarity Score: {"{:.2f}".format(similarity_score)}") # "{:.2f}".format(x)
 
