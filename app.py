@@ -99,9 +99,9 @@ titles_dict = {'MaterialGroup':'Approval Rate by MaterialGroup',
 
 title = titles_dict.get(selected_actual_name)
 from PIL import Image
-
 def generate_kpi_report(df, group_col, target_col='IsApproved', title=""):
 
+    
     kpi_df = df.groupby(group_col)[target_col].agg(
         Total_Lines=('size'),
         Approved_Lines=('sum'),
@@ -112,7 +112,7 @@ def generate_kpi_report(df, group_col, target_col='IsApproved', title=""):
 
     # Visualization
     fig = plt.figure(figsize=(7, 3))
-    sns.barplot(x='Approval_Rate', y=group_col, data=kpi_df, palette='viridis')
+    sns.barplot(x='Approval_Rate', y=group_col, data=kpi_df, palette='viridis',legend=True,hue=y)
     plt.title(title)
     plt.xlabel('Approval Rate')
     plt.ylabel(group_col)
