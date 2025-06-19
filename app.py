@@ -97,7 +97,8 @@ titles_dict = {'MaterialGroup':'Approval Rate by MaterialGroup',
 'Similarity_Category':'Approval Rate by Text Similarity Score',
 'Qty_Mismatch_Category':'Approval Rate by Quantity',
 'Price_Mismatch_Category':'Approval Rate by Price',
-'VendorName':'Approval Rate by VendorName'}
+'VendorName':'Approval Rate by VendorName',
+'VendorType':'Approval Rate by VendorType'}
 
 
 title = titles_dict.get(selected_actual_name)
