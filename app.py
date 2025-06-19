@@ -61,6 +61,7 @@ report_df['VendorName'] = report_df['VendorName'].apply(lambda x: x[::-1])
 
 
 var_mapping = {'קבוצת מוצר':'MaterialGroup',
+               'סוג ספק':'VendorType',
                'דמיון טקסטואלי':'Similarity_Category',
                'התאמה מדויקת - כמות פריטים':'Qty_Mismatch_Category',
                'התאמה מדויקת - מחיר':'Price_Mismatch_Category',
