@@ -65,7 +65,9 @@ var_mapping = {'קבוצת מוצר':'MaterialGroup',
                'דמיון טקסטואלי':'Similarity_Category',
                'התאמה מדויקת - כמות פריטים':'Qty_Mismatch_Category',
                'התאמה מדויקת - מחיר':'Price_Mismatch_Category',
-               'שם ספק':'VendorName'}
+               'שם ספק':'VendorName',
+               'מחלקה':'PO_Department'
+              }
     
 # Load Transformers model
 model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
@@ -98,7 +100,8 @@ titles_dict = {'MaterialGroup':'Approval Rate by MaterialGroup',
 'Qty_Mismatch_Category':'Approval Rate by Quantity',
 'Price_Mismatch_Category':'Approval Rate by Price',
 'VendorName':'Approval Rate by VendorName',
-'VendorType':'Approval Rate by VendorType'}
+'VendorType':'Approval Rate by VendorType',
+ 'PO_Department':'Approval Rate by Department'}
 
 
 title = titles_dict.get(selected_actual_name)
