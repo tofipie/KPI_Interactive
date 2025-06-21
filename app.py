@@ -40,10 +40,10 @@ Translation:
 
 direct_task_chain = create_chain(direct_task_prompt)
 
-st.title("Interactive KPI Dashboard and Text Similarity app 💬")
+st.title("Interactive KPI and Text Similarity Using LLM app 💬")
 st.header('Made by Noa Cohen')
 
-st.subheader(" מודל לחישוב דמיון טקסטואלי בין תיאורי פריטים", divider="green") 
+st.subheader(" חישוב דמיון טקסטואלי בין תיאורי פריטים", divider="green") 
 st.subheader('sentence-transformers/all-mpnet-base-v2',divider="green")
 
 
